@@ -1,0 +1,7 @@
+selenium
+webdriver_manager
+easyocr
+opencv-python
+mss
+pyautogui
+numpy
