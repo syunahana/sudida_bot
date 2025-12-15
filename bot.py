@@ -6,6 +6,7 @@ import mss
 import pyautogui
 import easyocr
 import threading
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,8 +16,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 import logging
 
 # Setup logging
+os.makedirs('logs', exist_ok=True)
 logging.basicConfig(
-    filename='bot_debug.log',
+    filename='logs/bot_debug.log',
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -117,7 +119,8 @@ def bot_loop(driver, reader):
             
             # Save debug screenshot occasionally
             if frame_count % 50 == 0:
-                 cv2.imwrite("latest_capture_debug.png", frame)
+                 os.makedirs('debug', exist_ok=True)
+                 cv2.imwrite("debug/latest_capture_debug.png", frame)
             
             # time.sleep(0.05)
 
